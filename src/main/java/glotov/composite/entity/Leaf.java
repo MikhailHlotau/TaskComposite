@@ -5,6 +5,13 @@ import java.util.List;
 public class Leaf implements Component {
     private TextType type;
     private String text;
+    private boolean isPunctuation; // Добавлено новое поле
+
+    public Leaf(TextType type, String text, boolean isPunctuation) {
+        this.type = type;
+        this.text = text;
+        this.isPunctuation = isPunctuation;
+    }
 
     public Leaf(TextType type, String text) {
         this.type = type;
@@ -28,12 +35,10 @@ public class Leaf implements Component {
 
     @Override
     public void removeComponent(Component component) {
-
     }
 
     @Override
     public void addComponent(Component component) {
-
     }
 
     @Override
@@ -47,5 +52,10 @@ public class Leaf implements Component {
                 "type=" + type +
                 ", text='" + text + '\'' +
                 '}';
+    }
+
+    public boolean isPunctuation() {
+        String punctuationSymbols = ".,?!:;-";
+        return punctuationSymbols.contains(text);
     }
 }

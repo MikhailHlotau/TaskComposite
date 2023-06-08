@@ -14,6 +14,7 @@ public class Main {
     public static void main(String[] args) {
         List<Component> paragraphs = null;
         Component textComponent = null;
+        LexemeParser lexemeParser = new LexemeParser();
 
         try {
             // Создание объекта PropertiesStreamReader
@@ -67,14 +68,14 @@ public class Main {
             }
             System.out.println("////////");
 
-            // Вывод слов
-            System.out.println("WORDS:");
+            // Вывод лексем
+            System.out.println("LEXEME:");
             for (Component paragraph : paragraphs) {
                 List<Component> sentences = paragraph.getComponents();
                 for (Component sentence : sentences) {
-                    List<Component> words = sentence.getComponents();
-                    for (Component word : words) {
-                        System.out.println(word.getText());
+                    List<Component> lexems = sentence.getComponents();
+                    for (Component lexeme : lexems) {
+                        System.out.println(lexeme.getText());
                     }
                 }
             }

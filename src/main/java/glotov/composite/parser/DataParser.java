@@ -28,4 +28,5 @@ public abstract class DataParser {
 
     // Метод, который должен быть реализован в подклассах для обработки запроса
     protected abstract Component handleRequest(String text);
+
 }

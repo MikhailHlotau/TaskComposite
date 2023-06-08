@@ -12,22 +12,16 @@ public class ParagraphParser extends DataParser {
 
     @Override
     protected Component handleRequest(String text) {
-        // Создаем композитный компонент для параграфа
-        Composite paragraphComponent = new Composite(TextType.PARAGRAPH);
-        // Создаем парсер предложений
-        DataParser sentenceParser = new SentenceParser();
-        // Разбиваем текст на предложения с использованием регулярного выражения
-        String[] sentences = text.split(SENTENCE_SPLIT);
+        Composite paragraphComponent = new Composite(TextType.PARAGRAPH); // Создаем композитный компонент для параграфа
+        DataParser sentenceParser = new SentenceParser();  // Создаем парсер предложений
+        String[] sentences = text.split(SENTENCE_SPLIT); // Разбиваем текст на предложения с использованием регулярного выражения
         for (String sentence : sentences) {
             sentence = sentence.trim();
-            // Парсим каждое предложение
-            Component sentenceComponent = sentenceParser.parse(sentence);
+            Component sentenceComponent = sentenceParser.parse(sentence); // Парсим каждое предложение
             if (!sentence.isEmpty()) {
-                // Добавляем компонент предложения к параграфу
-                paragraphComponent.addComponent(sentenceComponent);
+                paragraphComponent.addComponent(sentenceComponent);  // Добавляем компонент предложения к параграфу
             } else {
-                // Логируем предупреждение, если предложение пустое
-                logger.warn("The sentence is empty");
+                logger.warn("The sentence is empty");  // Логируем предупреждение, если предложение пустое
             }
         }
         return paragraphComponent;

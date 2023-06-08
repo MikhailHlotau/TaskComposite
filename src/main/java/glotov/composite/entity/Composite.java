@@ -21,10 +21,21 @@ public class Composite implements Component {
     public String getText() {
         StringBuilder sb = new StringBuilder();
         for (Component component : components) {
-            sb.append(component.getText());
+            if (component.getType() == TextType.SYMBOL) {
+                sb.append(component.getText());
+            } else if (component.getType() == TextType.LEXEME) {
+                if (component instanceof Leaf && ((Leaf) component).isPunctuation()) {
+                    sb.append(component.getText());
+                } else {
+                    sb.append(component.getText()).append(" ");
+                }
+            } else if (component.getType() == TextType.SENTENCE || component.getType() == TextType.PARAGRAPH) {
+                sb.append(component.getText());
+            }
         }
         return sb.toString();
     }
+
 
     @Override
     public List<Component> getComponents() {

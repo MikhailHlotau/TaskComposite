@@ -1,14 +1,10 @@
 package glotov.composite.reader;
 
 import glotov.composite.exception.TextException;
-
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
 
 public class TextReader {
     public String readFile(String filePath) throws TextException {
